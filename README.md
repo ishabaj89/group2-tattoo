@@ -10,4 +10,4 @@ Each person should work in their own branch. This is to help reduce the amount o
 To make working with Git and GitHub a bit easier, I suggest using a program such as GitHub Desktop (this is the program I personally use) or Git Kraken. This will help streamline the process and reduce errors due to user mistakes. 
  
 I recommend that you start by setting up a group meeting to decide how you will work on this project, internal deadlines, individual responsibilities, and project standards. Remember to use the Agile Method to help streamline the project process. 
-I will be in this chat for the duration of the group project. If you have any questions for me, feel free to tag me in the message and I will respond.
+I will be in this chat for the duration of the group project. If you have any questions for me, feel free to tag me in the message and I will respond
