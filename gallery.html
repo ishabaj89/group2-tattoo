@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — INK / LINE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"> <!--fonts.google.com-->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style/normalize.css">
+  <link rel="stylesheet" href="style/gallery.css">
+</head>
+<body class="page">
+
+  <!-- ========== My Navigation ========== -->
+  <header class="header">
+    <nav class="nav" aria-label="Main">
+      <ul class="nav__list">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="about.html" class="nav__link">About</a></li>
+        <li><a href="gallery.html" class="nav__link nav__link--active" aria-current="page">Gallery</a></li>
+        <li><a href="contact.html" class="nav__link">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="button">Book a session</a>
+    </nav>
+  </header>
+
+  <!-- ========== My GALLERY ========== -->
+  <main class="gallery">
+    <div class="gallery__intro">
+      <p class="gallery__eyebrow">Gallery</p>
+      <h1 class="gallery__title">Our work</h1>
+      <p class="gallery__lead">A selection of tattoo styles, designed with precision and made to last.</p>
+      <span class="gallery__line"></span>
+    </div>
+
+    <ul class="gallery__grid">
+      <li class="card">
+        <img class="card__image" src="photos/fine-line-floral.jpg" alt="Fine line floral rose tattoo on a calf">
+        <span class="card__accent"></span>
+        <div class="card__body">
+          <p class="card__category">Fine line</p>
+          <h2 class="card__title">Floral Tattoo</h2>
+        </div>
+      </li>
+
+      <li class="card">
+        <img class="card__image" src="photos/geometric.jpg" alt="Geometric pattern band tattoo on a forearm">
+        <span class="card__accent"></span>
+        <div class="card__body">
+          <p class="card__category">Geometric</p>
+          <h2 class="card__title">Geometric Tattoo</h2>
+        </div>
+      </li>
+
+      <li class="card">
+        <img class="card__image" src="photos/black-grey-realism.jpg" alt="Black and grey realism portrait tattoo">
+        <span class="card__accent"></span>
+        <div class="card__body">
+          <p class="card__category">Black &amp; grey</p>
+          <h2 class="card__title">Realism Tattoo</h2>
+        </div>
+      </li>
+
+      <li class="card">
+        <img class="card__image" src="photos/traditional.jpg" alt="Traditional style snake tattoo on an arm">
+        <span class="card__accent"></span>
+        <div class="card__body">
+          <p class="card__category">Traditional</p>
+          <h2 class="card__title">Traditional Tattoo</h2>
+        </div>
+      </li>
+
+      <li class="card">
+        <img class="card__image" src="photos/minimal-moon-stars.jpg" alt="Minimal moon and stars tattoo on an ankle">
+        <span class="card__accent"></span>
+        <div class="card__body">
+          <p class="card__category">Minimal</p>
+          <h2 class="card__title">Moon &amp; Stars</h2>
+        </div>
+      </li>
+
+      <li class="card">
+        <img class="card__image" src="photos/nature-animal.jpg" alt="Realistic lion tattoo on an upper arm">
+        <span class="card__accent"></span>
+        <div class="card__body">
+          <p class="card__category">Nature &amp; animals</p>
+          <h2 class="card__title">Animal Tattoo</h2>
+        </div>
+      </li>
+    </ul>
+
+    <a href="contact.html" class="button button--large">Contact us</a>
+  </main>
+
+</body>
+</html>

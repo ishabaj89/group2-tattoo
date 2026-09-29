@@ -1,0 +1,310 @@
+/* =========================================================
+   INK / LINE — Gallery page
+   BEM naming · Flexbox (header, nav, card body) · Grid (gallery)
+   ========================================================= */
+
+:root {
+  --bg: #090909;
+  --accent: #2dca4b;
+  --text: #ffffff;
+  --muted: #adadad;
+  --gutter: clamp(16px, 5vw, 64px);
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+body,
+h1,
+h2,
+p,
+ul { margin: 0; }
+
+ul { list-style: none; padding: 0; }
+
+a { color: inherit; text-decoration: none; }
+
+img { display: block; max-width: 100%; }
+
+.page {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+}
+
+/* =========================================================
+   HEADER + NAV  (flex)
+   ========================================================= */
+.header {
+  display: flex;
+  justify-content: flex-end;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 18px var(--gutter);
+  animation: slide-down 0.7s ease both;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.nav__list {
+  display: flex;
+  gap: 48px;
+}
+
+.nav__link {
+  position: relative;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.25s;
+}
+
+/* Underline that wipes in on hover */
+.nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+.nav__link:hover,
+.nav__link--active { color: var(--accent); }
+
+.nav__link:hover::after,
+.nav__link--active::after { transform: scaleX(1); }
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 54px;
+  padding: 0 28px;
+  border-radius: 4px;
+  background: var(--accent);
+  color: #000;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: transform 0.25s ease, box-shadow 0.25s;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px -8px rgba(45, 202, 75, 0.55);
+}
+
+.button--large {
+  margin-top: 40px;
+  animation: fade-up 0.8s 0.9s ease both;
+}
+
+.button:focus-visible,
+.nav__link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* =========================================================
+   GALLERY  (grid)
+   ========================================================= */
+.gallery {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 58px var(--gutter) 96px;
+}
+
+.gallery__intro {
+  margin-bottom: 36px;
+  animation: fade-up 0.8s 0.15s ease both;
+}
+
+.gallery__eyebrow {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gallery__title {
+  margin-top: 16px;
+  font-size: clamp(36px, 5vw, 52px);
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.gallery__lead {
+  margin-top: 8px;
+  max-width: 600px;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+/* Short green rule that draws itself in */
+.gallery__line {
+  display: block;
+  width: 72px;
+  height: 2px;
+  margin-top: 18px;
+  background: var(--accent);
+  transform-origin: left;
+  animation: draw 0.9s 0.6s ease both;
+}
+
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px 80px;
+}
+
+/* =========================================================
+   CARD
+   ========================================================= */
+.card {
+  position: relative;
+  aspect-ratio: 360 / 248;
+  overflow: hidden;
+  border-radius: 4px;
+  cursor: pointer;
+  animation: fade-up 0.8s ease both;
+}
+
+/* Staggered entrance for the six cards */
+.card:nth-child(1) { animation-delay: 0.3s; }
+.card:nth-child(2) { animation-delay: 0.4s; }
+.card:nth-child(3) { animation-delay: 0.5s; }
+.card:nth-child(4) { animation-delay: 0.6s; }
+.card:nth-child(5) { animation-delay: 0.7s; }
+.card:nth-child(6) { animation-delay: 0.8s; }
+
+.card__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(35%) brightness(0.85);
+  transition: transform 0.8s ease, filter 0.5s;
+}
+
+/* Dark gradient so the labels stay readable over any photo */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent 75%);
+}
+
+/* Everything above the gradient */
+.card__accent,
+.card__body { z-index: 1; }
+
+.card__accent {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  width: 4px;
+  height: 70%;
+  background: var(--accent);
+  transform: scaleY(0.35);
+  transform-origin: top;
+  transition: transform 0.5s ease;
+}
+
+.card__body {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: transform 0.5s ease;
+}
+
+.card__category {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.card__title { font-size: 16px; }
+
+/* ---------- Card hover ---------- */
+.card:hover .card__image {
+  transform: scale(1.07);
+  filter: grayscale(0) brightness(1);
+}
+
+.card:hover .card__accent { transform: scaleY(1); }
+
+.card:hover .card__body { transform: translateY(-4px); }
+
+/* =========================================================
+   Animations
+   ========================================================= */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes draw {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+@media (max-width: 1100px) {
+  .gallery__grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  .nav__list { gap: 28px; }
+}
+
+@media (max-width: 820px) {
+  .header { justify-content: center; }
+  .nav { flex-wrap: wrap; justify-content: center; gap: 20px; }
+  .nav__list { gap: 20px; }
+  .button { height: 44px; padding: 0 18px; }
+}
+
+@media (max-width: 560px) {
+  .gallery__grid { grid-template-columns: 1fr; gap: 20px; }
+}
+
+/* Respect reduced-motion settings */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.01ms !important;
+  }
+}
